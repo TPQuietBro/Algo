@@ -21,25 +21,48 @@ function findMaxNumber(array){
     return max;
 }
 
-var arr = new Array(49,38,65,97,76,13,27,49,55,04);
-// var loops1 = findLoops(101);
-// var loops2 = findLoops(11);
-// var loops3 = findLoops(1);
-// var loops4 = findLoops(3232);
-var max = findMaxNumber(arr);
-var loops = findLoops(max);
-// 创建一个临时数组用来保存基数
-var tempArray = new Array();
-var lenth = arr.length;
-// 这里采用从个位开始的方式
-for (let i = 0; i < loops; i++) {
-    var bucket = new Array();
-    for (let j = 0; j < length; j++) {
+function findPostion(number,loop) {
+    return parseInt(number / Math.pow(10,loop))%10;
+}
+
+function tempTwoArray(rowLength,colLength) {
+    var arr =  new Array(rowLength);   //表格有10行
+    for(var i = 0;i < arr.length; i++){
+        arr[i] = new Array(colLength);    //每行有10列
+    }
+    return arr;
+}
+
+function sort(arr,loop) {
+    for (let j = 0; j < arr.length; j++) {
         // 找到位数
-        var rowIndex = parseInt(arr[j] / Math.pow(10,i))%10;
-        
+        var rowIndex = findPostion(arr[j],loop);
+        for (let index = 0; index < 20; index++) {
+            if (tempArray[rowIndex][index] == null){
+                tempArray[rowIndex][index] = arr[j];
+                break;
+            } 
+        }
+    }
+    var index = 0;
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 20; j++) {
+            if (tempArray[i][j] != null) {
+                arr[index] = tempArray[i][j];
+                tempArray[i][j] = null;
+                index++;
+            }
+        }
     }
 }
 
-// alert(max);
-// alert(loops1 + "," + loops2 + "," + loops3 + "," + loops4);
+var arr = new Array(49,38,65,97,76,13,27,49,55,04);
+var max = findMaxNumber(arr);
+var loops = findLoops(max);
+// 创建一个临时数组用来保存基数
+var tempArray = tempTwoArray(10,loops);
+// 这里采用从个位开始的方式
+for (let i = 0; i < loops; i++) {
+    sort(arr,i);
+}
+alert(arr);
