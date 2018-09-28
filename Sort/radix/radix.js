@@ -34,6 +34,8 @@ function tempTwoArray(rowLength,colLength) {
 }
 
 function sort(arr,loop) {
+    // 创建一个临时数组用来保存基数
+    var tempArray = tempTwoArray(10,loops);
     for (let j = 0; j < arr.length; j++) {
         // 找到位数
         var rowIndex = findPostion(arr[j],loop);
@@ -44,6 +46,7 @@ function sort(arr,loop) {
             } 
         }
     }
+    // console.log(tempArray);
     var index = 0;
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 20; j++) {
@@ -59,8 +62,6 @@ function sort(arr,loop) {
 var arr = new Array(49,38,65,97,76,13,27,49,55,04);
 var max = findMaxNumber(arr);
 var loops = findLoops(max);
-// 创建一个临时数组用来保存基数
-var tempArray = tempTwoArray(10,loops);
 // 这里采用从个位开始的方式
 for (let i = 0; i < loops; i++) {
     sort(arr,i);
