@@ -10,12 +10,9 @@ function findLoops(number) {
 }
 function findMaxNumber(array){
     var max;
-    for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] < array[i + 1]) {
-            max = array[i + 1];
-        } else {
+    for (let i = 0; i < array.length; i++) {
+        if (max < array[i]) {
             max = array[i];
-            swap(array,i,i + 1);
         }
     }
     return max;
