@@ -7,33 +7,29 @@
 var arr = new Array(49,38,65,97,76,13,27,49,55,04);
 
 function adjustHeap(arr,i,length) {
-    var left;
-    var right;
-    var j;
-    var temp = arr[i];
-    while ((left = 2 * i + 1) <= length) {
-        right = left + 1;
-        j = left; // 保存左结点
-        if (j < length && arr[left] < arr[right]) {
-            j++;
-        }
-        if (arr[i] < arr[j]){
-            swap(arr,i,j);
-        } else {
-            break;
-        }
-        i = j;
-    }
+   var temp = arr[i];
+   for (let k = 2 * i +1; k < length; k = 2 * k + 1){
+       if (k+1 < length && arr[k]<arr[k+1]) {
+           k++;
+       }     
+       if (arr[k] > temp) {
+           arr[i] = arr[k];
+           i = k;
+       } else {
+           break;
+       }
+   }
+   arr[i] = temp;
 }
 
 function heapSort(arr) {
-    var length = arr.length - 1;
+    var length = arr.length;
     for (let i = length/2 - 1; i >= 0; i--){
-        adjustHeap(arr,i,arr.length);
+        adjustHeap(arr,i,length);
     }
-    while (length >= 0) {
-        swap(arr,0,length--);
-        adjustHeap(arr,0,length);
+    for (let j = arr.length - 1; j >0; j--) {
+        swap(arr,0,j);
+        adjustHeap(arr,0,j);
         console.log(arr);
     }
 }
