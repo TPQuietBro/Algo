@@ -4,6 +4,7 @@ function merge(arr,start,end,mid) {
     var i = start;
     var j = mid + 1;
     var k = 0;
+    // console.log("start:"+i+",end:"+end+",mid:"+mid);
     while (i <= mid && j <= end) {
         if (arr[i] <= arr[j]) {
             tempArray[k++] = arr[i++];
@@ -29,7 +30,9 @@ function split(arr,start,end) {
     if (arr == null || start >= end) {
         return;
     }
+
     var mid = parseInt((start + end) * 0.5);
+    console.log("start:"+start+",end:"+end+",mid:"+mid);
     split(arr,start,mid);
     split(arr,mid + 1,end);
     merge(arr,start,end,mid);
