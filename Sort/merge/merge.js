@@ -4,7 +4,7 @@ function merge(arr,start,end,mid) {
     var i = start;
     var j = mid + 1;
     var k = 0;
-    console.log("start1:"+start+",end1:"+end+",mid1:"+mid);
+    // console.log("start1:"+start+",end1:"+end+",mid1:"+mid);
     while (i <= mid && j <= end) {
         if (arr[i] <= arr[j]) {
             tempArray[k++] = arr[i++];
@@ -27,17 +27,17 @@ function merge(arr,start,end,mid) {
 }
 // 拆分
 function split(arr,start,end) {
-    console.log("start:"+start+",end:"+end+",mid:"+mid);
+    // console.log("start:"+start+",end:"+end+",mid:"+mid);
     if (arr == null || start >= end) {
         return;
     }
 
     var mid = parseInt((start + end) * 0.5);
-    console.log("start1:"+start+",end:"+mid);
+    console.log("start-one:"+start+",end:"+mid);
     split(arr,start,mid);
-    console.log("start2:"+(mid + 1)+",end:"+end);
-    split(arr,mid + 1,end);
-    console.log("start3:"+start+",end:"+end+",mid:"+mid);
+    console.log("start-two:"+(mid + 1)+",end:"+end);
+    split(arr,(mid + 1),end);
+    console.log("start-three:"+start+",end:"+end+",mid:"+mid);
     merge(arr,start,end,mid);
 }
 
