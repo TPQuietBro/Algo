@@ -4,7 +4,7 @@ function merge(arr,start,end,mid) {
     var i = start;
     var j = mid + 1;
     var k = 0;
-    // console.log("start:"+i+",end:"+end+",mid:"+mid);
+    console.log("start1:"+start+",end1:"+end+",mid1:"+mid);
     while (i <= mid && j <= end) {
         if (arr[i] <= arr[j]) {
             tempArray[k++] = arr[i++];
